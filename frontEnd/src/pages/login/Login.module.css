@@ -1,0 +1,179 @@
+.container{
+    /* background-image: url('../../assets/bg.png'); */
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    /* position: absolute; */
+    top: 0;
+    z-index: -5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.iconsdiv{
+position: absolute;
+left: 45%;
+right: 40.43%;
+top: 67.03%;
+bottom: 37.21%;
+
+}
+
+.finallTitle{
+    position: absolute;
+    left: 46.5%;
+    right: 40.43%;
+top: 73.03%;
+bottom: 37.21%;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 19px;
+/* identical to box height */
+
+letter-spacing: -0.035em;
+
+color: #828282;
+
+}
+
+.bottomTitle{
+position: absolute;
+left: 45%;
+right: 40.43%;
+top: 63.03%;
+bottom: 37.21%;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 19px;
+/* identical to box height */
+
+letter-spacing: -0.035em;
+
+color: #828282;
+}
+
+.formContainer{
+    background-color: white;
+    width: 23%;
+    height: 70%;
+    border: 1px solid black;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.form{
+   
+  
+}
+.btnLogin{
+    text-align: center;
+    /* color: black; */
+    padding: 5px;
+    
+}
+.btnSubmit{
+    margin-top: 20px;
+    border-radius: 5px;
+    border-color: white;
+    cursor: pointer;
+    color: white;
+    background-color: #2F80ED;
+    padding: 5px;
+    width: 350px;
+    height: 40px;
+}
+
+.imageLogo{
+    position: absolute;
+    left: 40.61%;
+    right: 44.24%;
+    top: 16.98%;
+    bottom: 73.9%;
+    width: 40px;
+    margin-bottom: 20%;
+    background: #F0402C;
+    transform: matrix(1, 0, 0, -1, 0, 0);  
+}
+
+.titleLogo{
+    position: absolute;
+    left: 42.80%;
+    right: 44.24%;
+    top: 17%;
+    bottom: 73.9%;
+    width: 40px;
+   
+    color: #282051;
+    font-weight: bold;
+}
+
+.mainTitle{
+position: absolute;
+left: 41.61%;
+right: 44.24%;
+top: 22%;
+bottom: 68.4%;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 17px;
+line-height: 25px;
+letter-spacing: -0.035em;
+
+color: #333333;
+
+}
+
+
+.subTitle{
+position: absolute;
+left: 41.61%;
+right: 44.24%;
+top: 28.95%;
+bottom: 60.94%;
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 22px;
+letter-spacing: -0.035em;
+
+color: #333333;
+}
+
+.email{
+    padding: 10px;
+    margin: 10px;
+    width: 320px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin-bottom: 10px;
+}
+.password{
+    padding: 10px;
+    margin: 10px;
+    width: 320px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
