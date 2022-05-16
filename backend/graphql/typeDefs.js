@@ -40,7 +40,11 @@ input UpdateInput{
    email:String
    bio:String
    password:String
-} 
+}
+
+input GetUserInput{
+   email:String
+}
 
 type Query {
     message(id: ID!): Message
@@ -52,6 +56,7 @@ type Mutation {
     createMessage(messageInput: MessageInput): Message!
     registerUser(registerInput:RegisterInput):User 
     loginUser(loginUserInput:LoginInput):User
-    updateUser(updateUserInput:UpdateInput):User    
+    updateUser(updateUserInput:UpdateInput):User
+    getUser(getUserInput:GetUserInput):User    
 }
 `

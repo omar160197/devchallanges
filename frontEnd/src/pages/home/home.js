@@ -6,13 +6,24 @@ import { Avatar, Box, Button, Container, Divider } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import "./home.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EditPage from "../editpage/editPage";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, logout, reset } from "../../store/graphqlUser/graphqlUserSlice";
 
 const Home = () => {
   const [toggeler, setToggeler] = useState(false);
   const navigate = useNavigate();
+  const {isLoading,user,message,isError} = useSelector((state)=>state.user)
+  const dispatch=useDispatch()
+
+  useEffect(()=>{
+if (user === null){
+  dispatch(reset())
+  navigate('/login')
+}
+});
 
   return (
     <>
@@ -39,7 +50,7 @@ const Home = () => {
             </h4>
           </div>
           <div>
-            <div class="d-flex flex-row">
+            <div className="d-flex flex-row">
               <Avatar
                 style={{
                   display: "inline-block",
@@ -53,16 +64,16 @@ const Home = () => {
 
               <div>
                 <p style={{ fontWeight: "bold", marginTop: "20px" }}>
-                  Omar Barakat
+                  {user && user.username}
                 </p>
               </div>
               <div style={{ marginTop: "16px" }}>
-                <DropdownButton variant="">
+                <DropdownButton variant="" title="">
                   <Dropdown.Item href="#/action-1">
                     {" "}
                     <i
                       style={{ marginRight: "10px" }}
-                      class="fa-solid fa-user"
+                      className="fa-solid fa-user"
                     ></i>
                     My Profile
                   </Dropdown.Item>
@@ -70,15 +81,18 @@ const Home = () => {
                     {" "}
                     <i
                       style={{ marginRight: "10px" }}
-                      class="fa-solid fa-message"
+                      className="fa-solid fa-message"
                     ></i>
                     Group Chat
                   </Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item href="#/action-3">
+                  <Dropdown.Item onClick={()=>{
+                    dispatch(logout());
+                    navigate("/")
+                  }}>
                     <i
                       style={{ marginRight: "10px", color: "red" }}
-                      class="fa-solid fa-arrow-right-from-bracket"
+                      className="fa-solid fa-arrow-right-from-bracket"
                     ></i>
                     <span style={{ color: "red" }}>Logout</span>
                   </Dropdown.Item>
@@ -159,7 +173,7 @@ const Home = () => {
                 }}
               >  
                 Edit
-                <i style={{marginLeft:"7px",marginBottom:"4px"}} class="fa-solid fa-chevron-right"></i>
+                <i style={{marginLeft:"7px",marginBottom:"4px"}} className="fa-solid fa-chevron-right"></i>
               </Button>
             </Box>
             <Divider />
@@ -212,7 +226,7 @@ const Home = () => {
                 item
                 sx={{ marginTop: "2%", marginBottom: "2%", fontSize: "20px" }}
               >
-                <p>Omar Barakat</p>
+                <p>{user && user.username}</p>
               </Box>
             </Grid>
             {/********************************* Phone *****************************/}
@@ -236,7 +250,7 @@ const Home = () => {
                 item
                 sx={{ marginTop: "2%", marginBottom: "2%", fontSize: "20px" }}
               >
-                <p>+20 01024097151</p>
+                <p>{user && user.phone}</p>
               </Box>
             </Grid>
 
@@ -261,7 +275,7 @@ const Home = () => {
                 item
                 sx={{ marginTop: "2%", marginBottom: "2%", fontSize: "20px" }}
               >
-                <p>Hello that is my first Bio</p>
+                <p>{user && user.bio}</p>
               </Box>
             </Grid>
             {/********************************* email *****************************/}
@@ -284,7 +298,7 @@ const Home = () => {
                 item
                 sx={{ marginTop: "2%", marginBottom: "2%", fontSize: "20px" }}
               >
-                <p>omarparakat@gmail.com</p>
+                <p>{user &&user.email}</p>
               </Box>
             </Grid>
 
@@ -305,7 +319,7 @@ const Home = () => {
                 item
                 sx={{ marginTop: "2%",fontSize: "20px" }}
               >
-                <p>123456789</p>
+                <p>{user && user.password}</p>
               </Box>
             </Grid>
           </Box>
@@ -318,7 +332,7 @@ const Home = () => {
 export default Home;
 
 {
-  /* <a class="navbar-brand">
+  /* <a className="navbar-brand">
       
   </a> */
 }

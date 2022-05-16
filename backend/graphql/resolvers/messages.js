@@ -21,6 +21,11 @@ module.exports={
     },
     
     Query:{
-      message:(_,{ID})=>Message.findById(ID)
+      message:(_,ID)=>{ 
+        // console.log(ID.id);
+        const id=JSON.stringify(ID)
+        console.log(id);
+         return Message.findById(id)
+        }
     }
 }

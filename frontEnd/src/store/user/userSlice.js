@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+
 export const getCustomers = createAsyncThunk(
   'customer/getCustomer',
   async (_, thunkAPI) => {

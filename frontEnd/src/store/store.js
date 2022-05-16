@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import authReducer from './auth/authSlice';
+import graphqlUserSlice from './graphqlUser/graphqlUserSlice';
 import userSlice  from './user/userSlice';
 
 
@@ -9,8 +9,8 @@ export const store = configureStore({
       serializableCheck: false,
     }),
   reducer: {
-    auth: authReducer,
-    customer:userSlice,
 
+    customer:userSlice,
+    user:graphqlUserSlice
   },
 });

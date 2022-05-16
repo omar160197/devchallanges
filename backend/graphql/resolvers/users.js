@@ -28,8 +28,6 @@ module.exports = {
         bio: bio,
         password: encryptedPassword,
       });
-
-
       //create our jwt
       const token = jwt.sign(
         { user_id: newUser._id, email },
@@ -58,7 +56,6 @@ console.log(newUser);
           ' "USER_NOT_EXISTS"'
         );
       }
-
       //check password
       if (checkUser) {
         const validPassword = await bcrypt.compare(
@@ -86,6 +83,7 @@ console.log(newUser);
       }
     },
 
+
     async updateUser(_,{updateUserInput:{username,phone,bio,password,email}}){
       console.log(email); 
 
@@ -95,9 +93,10 @@ console.log(newUser);
        var encryptedPassword = bcrypt.hashSync(password, salt);
 
      user.username=username
+     user.email=email
      user.phone=phone
      user.bio=bio
-     user.password=encryptedPassword
+     user.password=password
    
      const res = await user.save()
      return {
@@ -105,13 +104,27 @@ console.log(newUser);
        ...res._doc,
      };
      },
+
+
+
+     async getUser(_,{getUserInput:{email}}){
+      console.log(email); 
+  
+     const user = await User.findOne({email})
+     const res = user
+     return {
+       id: res.id,
+       ...res._doc,
+     };
+     },
+
+
+
   },
 
 
-  
-
 
   Query: {
-    user: (_, { ID }) => User.findById(ID),
+    user: (_,  {ID }) => User.findById(ID),
   },
 };

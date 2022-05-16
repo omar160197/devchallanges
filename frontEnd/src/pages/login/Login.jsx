@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { login, reset } from '../../store/auth/authSlice';
 import Capture from '../../assets/Capture.PNG'
 import * as Yup from 'yup';
 //import "./login.css"
 import style from './Login.module.css';
+import { loginUser, reset } from '../../store/graphqlUser/graphqlUserSlice';
 
 const validationSchema = Yup.object({
     email: Yup.string().required('Please Enter your Email').email('Invalid email format'),
@@ -16,7 +16,10 @@ const validationSchema = Yup.object({
 const Login = ({ handleChange }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { isLoading, user, isSuccess, isError, message } = useSelector((state) => state.auth)
+
+    const { isLoading, user, isSuccess, isError, message } = useSelector((state) => state.user)
+    
+
 
     const formik = useFormik({
         initialValues: {
@@ -30,29 +33,28 @@ const Login = ({ handleChange }) => {
                 email: values.email,
                 password: values.password
             }
-            dispatch(login(userData))
+            dispatch(loginUser(userData))
             if (isError) {
                 console.log("error mesage")
             }
             if (isSuccess || user) {
                 navigate('/home')
             }
-            //  dispatch(reset())
+             dispatch(reset())
         },
         validationSchema,
     })
 
 
-    // useEffect(() => {
-    //     if (isError) {
-    //         //   toast.error(message)
-    //     }
-    //     if (isSuccess || user) {
-    //         dispatch(reset())
-    //         navigate('/')
-    //     }
 
-    // }, [user, isSuccess, isError, message, navigate, dispatch])
+    useEffect(() => {
+
+        if (isSuccess || user) {
+            // dispatch(reset())
+            navigate('/home')
+        }
+
+    }, [user, isSuccess, isError, message, navigate, dispatch])
     
 
     return (<>
